@@ -1,14 +1,15 @@
-# 🤖 ros2_yehia_learning
+# 🤖 ros2_abdessamad_learning
 
-> **A complete collection of ROS 2 Humble examples in C++ and Python — built from scratch**
+> **A learning repository of ROS 2 Humble examples in C++ and Python**
+
+This repository is an improved fork of Yehia Elkh's ROS 2 learning project. The original author's work and attribution are preserved below; this fork focuses on documentation, reproducibility, and CI.
 
 [![ROS2](https://img.shields.io/badge/ROS2-Humble-22314E?logo=ros)](https://docs.ros.org/en/humble)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04%20Jammy-orange)](https://ubuntu.com/)
 [![C++](https://img.shields.io/badge/C++-17-brightgreen)](https://isocpp.org/)
 [![Python](https://img.shields.io/badge/Python-3.10-yellow)](https://www.python.org/)
-[![GitHub release](https://img.shields.io/github/v/release/YehiaElkh/ros2_yehia_learning)](https://github.com/YehiaElkh/ros2_yehia_learning/releases)
-[![GitHub stars](https://img.shields.io/github/stars/YehiaElkh/ros2_yehia_learning)](https://github.com/YehiaElkh/ros2_yehia_learning/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/abdessamadzallafi/ros2_abdessamad_learning)](https://github.com/abdessamadzallafi/ros2_abdessamad_learning/stargazers)
 ---
 
 ## 📖 Description
@@ -33,6 +34,7 @@ ce qui permet de comparer et comprendre les deux APIs.*
 - `rosdep`
 
 ```bash
+# Install ROS 2 Humble and colcon/rosdep on Ubuntu 22.04 first.
 source /opt/ros/humble/setup.bash
 ```
 
@@ -42,15 +44,15 @@ source /opt/ros/humble/setup.bash
 
 ```bash
 # Clone the repository
-git clone https://github.com/yehiaelkh/ros2_yehia_learning.git
-cd ros2_yehia_learning
+git clone https://github.com/abdessamadzallafi/ros2_abdessamad_learning.git
+cd ros2_abdessamad_learning
 
 # Install dependencies
-rosdep install --from-paths src --ignore-src --rosdistro humble -y
+rosdep update
+rosdep install --from-paths ros2_fundamentals --ignore-src --rosdistro humble -y
 
 # Build all packages
-cd ~/ros2_ws
-colcon build --symlink-install
+colcon build --base-paths ros2_fundamentals --symlink-install
 
 # Source the workspace
 source install/setup.bash
@@ -61,44 +63,25 @@ source install/setup.bash
 ## 📦 Repository Structure / Structure du dépôt
 
 ```
-ros2_yehia_learning/
+ros2_abdessamad_learning/
 │
-├── start_with_simple_nodes/           # C++ — Simple nodes & timers
-├── start_with_simple_nodes_py/        # Python — Simple nodes & timers
-│
-├── publisher_and_subscriber/          # C++ — Topics, pub/sub, custom msgs
-├── publisher_and_subscriber_py/       # Python — Topics, pub/sub, custom msgs
-│
-├── custom_msg_and_srv/                # C++ — Custom .msg, .srv, .action definitions
-│
-├── service_server_and_client/         # C++ — Services server & client
-├── service_server_and_client_py/      # Python — Services server & client
-│
-├── parameters/                        # C++ — Parameters declaration & usage
-├── parameters_py/                     # Python — Parameters declaration & usage
-│
-├── actions/
-│   ├── action_tutorial/               # C++ — Action server & client
-│   └── action_tutorial_py/            # Python — Action server & client
-│
-├── dynamic_tf2_publisher/             # C++ — TF2 dynamic broadcaster
-├── dynamic_tf2_publisher_py/          # Python — TF2 dynamic broadcaster
-│
-├── plugins/
-│   ├── vehicle_base/                  # C++ — Abstract base class (pluginlib)
-│   ├── vehicle_plugins/               # C++ — Concrete plugin implementations
-│   ├── vehicle_base_py/               # Python — Abstract base class (abc)
-│   └── vehicle_plugins_py/            # Python — Concrete plugin implementations
-│
-├── message_sync/                      # C++ — Multi-topic synchronization
-├── message_sync_py/                   # Python — Multi-topic synchronization
-│
-└── create_library_with_header/
-    ├── publisher_library/             # C++ — Reusable shared library
-    └── use_library/                   # C++ — Consumes the shared library
-└── create_library_with_header_py/
-    ├── publisher_library_py/          # Python — Reusable Python module
-    └── use_library_py/                # Python — Consumes the Python module
+└── ros2_fundamentals/                 # ROS 2 packages (C++ and Python)
+    ├── start_with_simple_nodes_py/    # Python — Simple nodes & timers
+    ├── publisher_and_subscriber/      # C++ — Topics and pub/sub
+    ├── publisher_and_subscriber_py/   # Python — Topics and pub/sub
+    ├── custom_msg_and_srv/            # Custom interfaces
+    ├── service_server_and_client/     # C++ services
+    ├── service_server_and_client_py/  # Python services
+    ├── parameters/                    # C++ parameters
+    ├── parameters_py/                 # Python parameters
+    ├── actions/                       # C++ and Python action tutorials
+    ├── dynamic_tf2_publisher/         # C++ TF2 broadcaster
+    ├── dynamic_tf2_publisher_py/      # Python TF2 broadcaster
+    ├── plugins/                       # C++ and Python plugin examples
+    ├── message_sync/                  # C++ message synchronization
+    ├── message_sync_py/               # Python message synchronization
+    ├── create_library_with_header/    # C++ reusable libraries
+    └── create_library_with_header_py/ # Python reusable libraries
 ```
 
 ---
@@ -372,7 +355,7 @@ ros2 interface show pkg/action/Type
 
 ## 👤 Author / Auteur
 
-**Yehia Elkh*
+**Yehia Elkh**
 - GitHub: [@yehiaelkh](https://github.com/YehiaElkh)
 - LinkedIn: [yehiaelkh](https://www.linkedin.com/in/yahya-elkhoulati-535580331/)
 
@@ -380,7 +363,7 @@ ros2 interface show pkg/action/Type
 
 ## 📄 License
 
-This project is licensed under the Apache 2.0 License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 

@@ -23,7 +23,8 @@ class SyncSubscriber(Node):
         self.sync_ = message_filters.ApproximateTimeSynchronizer(
             [self.sub1_, self.sub2_],   # liste des subscribers
             queue_size=10,              # messages en attente
-            slop=0.1                    # tolérance en secondes
+            slop=0.1,
+            allow_headerless=True                    # tolérance en secondes
             # slop = écart maximum accepté entre les timestamps
         )
 

@@ -39,7 +39,7 @@
 ## 🚀 Build & Run
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 # Build base first, then plugins
 colcon build --packages-select vehicle_base vehicle_plugins
 source install/setup.bash

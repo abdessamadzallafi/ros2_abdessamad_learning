@@ -27,7 +27,7 @@
 ## 🚀 Build & Run
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 colcon build --packages-select service_server_and_client
 source install/setup.bash
 

@@ -26,7 +26,7 @@
 ## 🚀 Build & Run
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 colcon build --packages-select start_with_simple_nodes_py
 source install/setup.bash
 

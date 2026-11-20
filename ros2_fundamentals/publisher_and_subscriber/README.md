@@ -29,7 +29,7 @@
 ## 🚀 Build & Run
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 colcon build --packages-select publisher_and_subscriber
 source install/setup.bash
 

@@ -59,7 +59,7 @@ string current_status
 ## 🚀 Build & Verify
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 colcon build --packages-select custom_msg_and_srv
 source install/setup.bash
 

@@ -28,7 +28,7 @@
 ## 🚀 Build & Run
 
 ```bash
-cd ~/ros2_ws
+cd ~/projects/ros2_abdessamad_learning
 colcon build --packages-select action_tutorial
 source install/setup.bash
 
