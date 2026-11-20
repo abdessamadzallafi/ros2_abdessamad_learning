@@ -9,40 +9,57 @@ jobs:
   build-and-test:
     runs-on: ubuntu-22.04
     timeout-minutes: 45
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up ROS 2 Humble
+      - name: Set up ROS development tools
         uses: ros-tooling/setup-ros@v0.7
-        with:
-          required-ros-distributions: humble
+
+      - name: Install ROS 2 Humble Base
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ros-humble-ros-base
 
       - name: Install dependencies
         shell: bash
         run: |
           source /opt/ros/humble/setup.bash
           rosdep update
-          rosdep install --from-paths ros2_fundamentals --ignore-src --rosdistro humble -y --skip-keys="ament_python"
+          rosdep install \
+            --from-paths ros2_fundamentals \
+            --ignore-src \
+            --rosdistro humble \
+            -y \
+            --skip-keys="ament_python"
 
       - name: Build packages
         shell: bash
         run: |
           source /opt/ros/humble/setup.bash
-          colcon build --base-paths ros2_fundamentals --event-handlers console_direct+
+          colcon build \
+            --base-paths ros2_fundamentals \
+            --event-handlers console_direct+
 
       - name: Run tests
         shell: bash
         run: |
           source /opt/ros/humble/setup.bash
           source install/setup.bash
-          colcon test --base-paths ros2_fundamentals --event-handlers console_direct+
+          colcon test \
+            --base-paths ros2_fundamentals \
+            --event-handlers console_direct+
 
       - name: Report test results
         if: always()
         shell: bash
         run: |
-          source /opt/ros/humble/setup.bash
+          if [ -f /opt/ros/humble/setup.bash ]; then
+            source /opt/ros/humble/setup.bash
+          fi
+
           if [ -d build ]; then
             colcon test-result --all --verbose
           else
