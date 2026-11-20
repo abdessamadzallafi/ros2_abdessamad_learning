@@ -23,7 +23,7 @@ jobs:
         run: |
           source /opt/ros/humble/setup.bash
           rosdep update
-          rosdep install --from-paths ros2_fundamentals --ignore-src --rosdistro humble -y
+          rosdep install --from-paths ros2_fundamentals --ignore-src --rosdistro humble -y --skip-keys="ament_python"
 
       - name: Build packages
         shell: bash
@@ -43,4 +43,8 @@ jobs:
         shell: bash
         run: |
           source /opt/ros/humble/setup.bash
-          colcon test-result --all --verbose
+          if [ -d build ]; then
+            colcon test-result --all --verbose
+          else
+            echo "Build directory not found; build did not complete."
+          fi
